@@ -24,8 +24,8 @@ router.get('/', function(req, res) {
     } else {
 
       db.query('SELECT * FROM tasks;', function(queryError, result){
-        done(); //maps back to done parameter;
-        //done() is what gives the connection back to the pool
+        done();
+
         if (queryError) {
           console.log('Error making query.');
           res.send(500);
