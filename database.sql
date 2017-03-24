@@ -4,3 +4,8 @@ CREATE TABLE "tasks" (
 	description VARCHAR(300),
 	status BOOLEAN
 );
+
+--fills table with some dummy info
+INSERT INTO "tasks" ("description", "status")
+VALUES ('do dishes', TRUE), ('grocery shopping', TRUE),
+('check mail', TRUE), ('do taxes', TRUE);
