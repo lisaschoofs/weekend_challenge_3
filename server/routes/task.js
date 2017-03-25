@@ -40,6 +40,7 @@ router.get('/', function(req, res) {
   }); //ends pool.connect
 }); //ends router
 
+
 //connects with AJAX POST that adds a new task, inputs into database
 router.post('/add', function(req, res) {
   console.log(req.body);
@@ -70,5 +71,56 @@ router.post('/add', function(req, res) {
   }); //ends pool.connect
 }); //ends router
 
+//route for AJAX 'PUT' that updates a task as comleted.
+router.put('/update/:taskId', function(req, res){
+  var taskId= req.params.taskId;
+  var description= req.body.title;
+  var status = req.body.author;
+  console.log(req.params.taskId);
+
+  pool.connect(function(errorConnectingToDatabase, db, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to the database.');
+      res.send(500);
+    } else {
+
+      db.query("UPDATE tasks SET status = 'FALSE' WHERE id = $1;", [taskId, description, status], function(queryError, result){
+        done();
+        if(queryError) {
+          console.log('Error making query.');
+          res.sendStatus(500);
+        } else {
+          console.log(result); // Good for debugging
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
+
+//for DELETE AJAX - deletes a task from the to-do list/DB
+router.delete('/delete/:taskId', function(req, res){
+  var taskId= req.params.taskId;
+  console.log(req.params.taskId);
+
+  pool.connect(function(errorConnectingToDatabase, db, done){
+    if(errorConnectingToDatabase) {
+      console.log('Error connecting to the database.');
+      res.send(500);
+    } else {
+      // we want to delete the selected book by targeting with ID
+      db.query('DELETE FROM tasks WHERE id =' + taskId, function(queryError, result){
+        done();
+        if(queryError) {
+          console.log('Error making query.');
+          res.sendStatus(500);
+        } else {
+          console.log(result);
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
 
 module.exports = router;
