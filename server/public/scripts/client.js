@@ -7,7 +7,21 @@ $(document).ready(function(){
 function eventListeners() {
   $('#addButton').on('click', function(){
     console.log('Add button clicked'); // + $(this).data('book'));
-  });
+    //ADD IF STATEMENT for input validation
+    console.log($('#task').val());
+        $.ajax({
+          type: "POST",
+          url: "/tasks/add",
+          data: {task: $('#task').val(), status: "TRUE"},
+          success: function(response) {
+
+            // Refresh our data
+            console.log('successfully added to DB');
+            getTasks();
+          } // ends success function
+        }); //ends AJAX
+        //ADD SOMETHING to clear input fields once new task has been submitted
+    });
 }
 
 
@@ -16,6 +30,7 @@ function getTasks() {
     type: "GET",
     url: "/tasks",
     success: function(response) {
+      $('.taskList').empty();
       console.log(response);
       for (var i = 0; i < response.length; i++) {
         var task = response[i];

@@ -40,4 +40,35 @@ router.get('/', function(req, res) {
   }); //ends pool.connect
 }); //ends router
 
+//connects with AJAX POST that adds a new task, inputs into database
+router.post('/add', function(req, res) {
+  console.log(req.body);
+  var description = req.body.task;
+  var status = req.body.status;
+  console.log(description);
+
+  pool.connect(function(error, db, done){
+    //check to see if there's an error connecting
+    if(error) {
+      console.log("error connecting to the database.");
+      res.send(500);
+
+    } else {
+
+      db.query('INSERT INTO "tasks" ("description", "status") VALUES ($1,$2);', [description, status], function(queryError, result){
+        done();
+        if (queryError) {
+          console.log('Error making query.');
+          res.sendStatus(500);
+        } else {
+          console.log(result);
+          res.sendStatus(201);
+
+        }//ends else
+      }); //ends db query
+    } //ends else
+  }); //ends pool.connect
+}); //ends router
+
+
 module.exports = router;
