@@ -21,10 +21,8 @@ function getTasks() {
         var task = response[i];
         console.log(response[i]);
         // var $el = $('.taskList').children().last();
-        // $el.append('<p>' + task.id + '</p>');
+        $('.taskList').append('<p>' + task.description + '</p>');
         // $el.append('<p>' + task.description + '</p>');
-        // // $('.taskList').append('<p>test</p>');
-        // // $('#taskList').append('<p>' + )
       }
     }//ends success
 
