@@ -1,7 +1,13 @@
 html {
+
+}
+
+
+.taskList {
   color: red;
 }
 
-completedTask {
+
+.completedTask {
   color: blue;
 }

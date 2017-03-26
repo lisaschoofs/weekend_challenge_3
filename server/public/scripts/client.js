@@ -35,7 +35,7 @@ function eventListeners() {
 
 
 
-    $('.taskList').on('click', '#delete', function(){
+    $('body').on('click', '#delete', function(){
       console.log('Delete task: ' + $(this).data('task'));
       taskId = $(this).data('task');
       var confirmation = confirm("Are you SURE you want to delete this task? If so, click OK!");
@@ -74,18 +74,31 @@ function getTasks() {
     url: "/tasks",
     success: function(response) {
       $('.taskList').empty();
-      $('.taskList').append("<div class='task'></div>");
+      $('.completedTask').empty();
+      $('.taskList').append("<div></div>");
+      $('.completedTask').append("<div></div>");
       console.log(response);
       for (var i = 0; i < response.length; i++) {
         var task = response[i];
         console.log(response[i]);
-        var $el = $('.taskList').children().last();
-        $el.append('<p>' + task.description +
-                              '<button id="complete" data-task="' +
-                              task.id + '">Complete!</button>' +
-                              '<button id="delete" data-task="' +
-                              task.id + '">Remove!</button></p>');
+        console.log(task.status);
+
+        //if statement that checks if a task has been completed or not.
+          if ( task.status === true) {
+            var $el = $('.taskList').children().last();
+            $el.append('<p>' + task.description +
+                      '<button id="complete" data-task="' +
+                      task.id + '">Complete!</button>' +
+                      '<button id="delete" data-task="' +
+                      task.id + '">Remove!</button></p>');
+          }
+          else {
+            var complete = $('.completedTask').children().last();
+            complete.append('<p>' + task.description +
+                      '<button id="delete" data-task="' +
+                      task.id + '">Remove!</button></p>');
       }
+    } //ends for
     }//ends success
   });//ends ajax
 } //ends getTasks function
