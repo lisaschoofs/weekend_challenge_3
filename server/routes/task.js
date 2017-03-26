@@ -49,7 +49,7 @@ router.post('/add', function(req, res) {
   console.log(description);
 
   pool.connect(function(error, db, done){
-    //check to see if there's an error connecting
+
     if(error) {
       console.log("error connecting to the database.");
       res.send(500);

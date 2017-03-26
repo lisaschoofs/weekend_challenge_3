@@ -11,8 +11,8 @@ $(document).ready(function(){
     //
     //     getBooks();
     //   } // ends success function
-    //   
-    });
+    //});
+
 });
 
 function eventListeners() {
@@ -51,9 +51,10 @@ function getTasks() {
       for (var i = 0; i < response.length; i++) {
         var task = response[i];
         console.log(response[i]);
-        // var $el = $('.taskList').children().last();
-        $('.taskList').append('<p>' + task.description + '</p>');
-        // $el.append('<p>' + task.description + '</p>');
+        var $el = $('.taskList').children().last();
+        $('.taskList').append('<p>' + task.description +
+                              '<button id="complete">Complete!</button>' +
+                              '<button id="delete">Remove!</button></p>');
       }
     }//ends success
 
