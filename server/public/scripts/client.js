@@ -25,17 +25,21 @@ function eventListeners() {
     });//ends addbutton
 
 
+
     $('.taskList').on('click', '#delete', function(){
       console.log('Delete task: ' + $(this).data('task'));
       taskId = $(this).data('task');
-      $.ajax({
-        type: 'DELETE',
-        url: '/tasks/delete/' + taskId,
-        success: function(response) {
-          console.log(response);
-          getTasks();
-      } //end success
-      }); //ends ajax
+      var confirmation = confirm("Are you SURE you want to delete this task? If so, click OK!");
+      if (confirmation) {
+        $.ajax({
+          type: 'DELETE',
+          url: '/tasks/delete/' + taskId,
+          success: function(response) {
+            console.log(response);
+            getTasks();
+        } //end success
+        }); //ends ajax
+      }
   }); //ends delete click event listener
 
 
