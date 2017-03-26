@@ -74,8 +74,6 @@ router.post('/add', function(req, res) {
 //route for AJAX 'PUT' that updates a task as comleted.
 router.put('/update/:taskId', function(req, res){
   var taskId= req.params.taskId;
-  var description= req.body.title;
-  var status = req.body.author;
   console.log(req.params.taskId);
 
   pool.connect(function(errorConnectingToDatabase, db, done){
@@ -84,7 +82,7 @@ router.put('/update/:taskId', function(req, res){
       res.send(500);
     } else {
 
-      db.query("UPDATE tasks SET status = 'FALSE' WHERE id = $1;", [taskId, description, status], function(queryError, result){
+      db.query("UPDATE tasks SET status = 'FALSE' WHERE id = $1;", [taskId], function(queryError, result){
         done();
         if(queryError) {
           console.log('Error making query.');

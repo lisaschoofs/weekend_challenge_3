@@ -4,17 +4,6 @@ $(document).ready(function(){
   console.log("jQuery ready to rock");
   eventListeners();
   getTasks();
-
-    // $.ajax({
-    //   type: "PUT",
-    //   url: "/tasks/update/" + taskId,
-    //   data: {title: $('#title').val(), author:$('#author').val(), publisher: $('#publisher').val(), year: $('#year').val()},
-    //   success: function(response) {
-    //
-    //     getBooks();
-    //   } // ends success function
-    //});
-
 });
 
 function eventListeners() {
@@ -36,30 +25,35 @@ function eventListeners() {
     });//ends addbutton
 
 
-      $('.taskList').on('click', '#delete', function(){
-        console.log('Delete task: ' + $(this).data('task'));
-        taskId = $(this).data('task');
-        $.ajax({
-          type: 'DELETE',
-          url: '/tasks/delete/' + taskId,
-          success: function(response) {
-            console.log(response);
-            getTasks();
-        } //end success
-        }); //ends ajax
-    }); //ends delete click event listener
+    $('.taskList').on('click', '#delete', function(){
+      console.log('Delete task: ' + $(this).data('task'));
+      taskId = $(this).data('task');
+      $.ajax({
+        type: 'DELETE',
+        url: '/tasks/delete/' + taskId,
+        success: function(response) {
+          console.log(response);
+          getTasks();
+      } //end success
+      }); //ends ajax
+  }); //ends delete click event listener
 
 
-
-
+  $('.taskList').on('click', '#complete', function(){
+    console.log('Mark task ' + $(this).data('task') + ' as complete.');
+    taskId = $(this).data('task');
+    $.ajax({
+      type: 'PUT',
+      url: '/tasks/update/' + taskId,
+      data: {task: taskId, status: "FALSE"},
+      success: function(response) {
+        console.log(response);
+        getTasks();
+    } //end success
+    }); //ends ajax
+  }); //ends complete click event listener
 
 }
-
-
-
-
-
-
 
 function getTasks() {
   $.ajax( {
