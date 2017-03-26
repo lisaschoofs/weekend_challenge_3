@@ -25,6 +25,7 @@ function eventListeners() {
             // Refresh our data
             console.log('successfully added to DB');
             getTasks();
+            task.value = '';
           } // ends success function
         }); //ends AJAX
         //ADD SOMETHING to clear input fields once new task has been submitted
