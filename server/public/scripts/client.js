@@ -1,3 +1,5 @@
+var taskID = 0;
+
 $(document).ready(function(){
   console.log("jQuery ready to rock");
   eventListeners();
@@ -28,17 +30,35 @@ function eventListeners() {
             // Refresh our data
             console.log('successfully added to DB');
             getTasks();
-
-
-            // dynamically creates delete button, and puts the db ID on it.
-            // our key is book, our value is id
-
-
           } // ends success function
         }); //ends AJAX
         //ADD SOMETHING to clear input fields once new task has been submitted
-    });
+    });//ends addbutton
+
+
+      $('.taskList').on('click', '#delete', function(){
+        console.log('Delete task: ' + $(this).data('task'));
+        taskId = $(this).data('task');
+        $.ajax({
+          type: 'DELETE',
+          url: '/tasks/delete/' + taskId,
+          success: function(response) {
+            console.log(response);
+            getTasks();
+        } //end success
+        }); //ends ajax
+    }); //ends delete click event listener
+
+
+
+
+
 }
+
+
+
+
+
 
 
 function getTasks() {
@@ -47,16 +67,18 @@ function getTasks() {
     url: "/tasks",
     success: function(response) {
       $('.taskList').empty();
+      $('.taskList').append("<div class='task'></div>");
       console.log(response);
       for (var i = 0; i < response.length; i++) {
         var task = response[i];
         console.log(response[i]);
         var $el = $('.taskList').children().last();
-        $('.taskList').append('<p>' + task.description +
-                              '<button id="complete">Complete!</button>' +
-                              '<button id="delete">Remove!</button></p>');
+        $el.append('<p>' + task.description +
+                              '<button id="complete" data-task="' +
+                              task.id + '">Complete!</button>' +
+                              '<button id="delete" data-task="' +
+                              task.id + '">Remove!</button></p>');
       }
     }//ends success
-
   });//ends ajax
-}
+} //ends getTasks function
