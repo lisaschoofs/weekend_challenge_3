@@ -7,10 +7,16 @@ $(document).ready(function(){
 });
 
 function eventListeners() {
+
   $('#addButton').on('click', function(){
     console.log('Add button clicked'); // + $(this).data('book'));
-    //ADD IF STATEMENT for input validation
     console.log($('#task').val());
+
+    //sets ups initial 'if/else' statement to ensure something is in the input field
+    if ($('#task').val() === '') {
+      var confirmation = confirm("Don't forget to add a task first!");
+    //if there's something in the input field, proceed with task addition!
+    } else {
         $.ajax({
           type: "POST",
           url: "/tasks/add",
@@ -22,6 +28,8 @@ function eventListeners() {
           } // ends success function
         }); //ends AJAX
         //ADD SOMETHING to clear input fields once new task has been submitted
+      }//ends else
+
     });//ends addbutton
 
 
