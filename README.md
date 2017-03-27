@@ -1,8 +1,8 @@
-#'TO DO' Application
+# 'TO DO' Application
 
 This weekend is all about showing us that you have a handle on each of the different parts of the full stack. For this weekends challenge, you are going to create a 'TO DO' application. This is the type of application that is very common to tackle when learning a new language, which makes it extremely valuable to work through for the first time, since chances are good that at some point in your career you will tackle this type of application, but in another language.
 
-###Here are the specific components for the challenge:
+### Here are the specific components for the challenge:
 
 - Create a front end experience that allows a user to create a task.
 - When the task is created, it should be stored inside of a database (SQL)
@@ -18,10 +18,10 @@ We would recommend you spend some time thinking about how to approach this probl
 
 Additionally, please include some way to recreate your initial database schema. This can be a .sql file with CREATE TABLE statements or you can create your schema automatically when your app loads.
 
-##HARD MODE
+## HARD MODE
 
 In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
 
-##PRO MODE
+## PRO MODE
 
 Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
