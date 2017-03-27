@@ -1,12 +1,25 @@
-html {
-  margin-left: 25px;
+h1 {
+  text-align: center;
+}
+
+h2 {
+  background-color: #CFE4E4;
+  text-indent: 25px;
+}
+
+table {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.addTask {
+  text-align: center;
 }
 
 .taskList {
   color: red;
 }
 
-
 .completedTask {
-  color: blue;
+  font-style: italic;
 }

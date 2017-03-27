@@ -25,16 +25,14 @@ function eventListeners() {
             // Refresh our data
             console.log('successfully added to DB');
             getTasks();
-            task.value = '';
+            task.value = ''; //clears input field
           } // ends success function
         }); //ends AJAX
-        //ADD SOMETHING to clear input fields once new task has been submitted
       }//ends else
-
     });//ends addbutton
 
 
-
+//delete button listener
     $('body').on('click', '#delete', function(){
       console.log('Delete task: ' + $(this).data('task'));
       taskId = $(this).data('task');
@@ -51,7 +49,7 @@ function eventListeners() {
       }
   }); //ends delete click event listener
 
-
+//complete button listener
   $('.taskList').on('click', '#complete', function(){
     console.log('Mark task ' + $(this).data('task') + ' as complete.');
     taskId = $(this).data('task');
@@ -68,11 +66,13 @@ function eventListeners() {
 
 }
 
+//appends existing tasks to the DOM
 function getTasks() {
   $.ajax( {
     type: "GET",
     url: "/tasks",
     success: function(response) {
+      //removes old tasks
       $('.taskList').empty();
       $('.completedTask').empty();
       console.log(response);
@@ -82,18 +82,18 @@ function getTasks() {
         var task = response[i];
         console.log(response[i]);
         console.log(task.status);
-        //if statement that checks if a task has been completed
+        //if statement that checks if a task has been completed. true means yet to be completed
           if ( task.status === true ) {
             var $el = $('.taskList').children().last();
             $el.append('<td>' + task.description + '</td>');
-            $el.append('<td><button id="complete" data-task="' + task.id + '">Complete!</button></td>');
-            $el.append('<td><button id="delete" data-task="' + task.id + '">Delete!</button></td>');
+            $el.append('<td><button id="complete" data-task="' + task.id + '">Complete!</button></td>' +
+                      '<td><button id="delete" data-task="' + task.id + '">Delete!</button></td>');
           }
           else {
             var complete = $('.completedTask').children().last();
             complete.append('<td>' + task.description + '</td>');
             complete.append('<td><button id="delete" data-task="' +
-                            task.id + '">Remove!</button></td>');
+                            task.id + '">Delete!</button></td>');
       }
     } //ends for
     }//ends success

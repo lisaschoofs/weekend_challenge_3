@@ -40,7 +40,6 @@ router.get('/', function(req, res) {
   }); //ends pool.connect
 }); //ends router
 
-
 //connects with AJAX POST that adds a new task, inputs into database
 router.post('/add', function(req, res) {
   console.log(req.body);
