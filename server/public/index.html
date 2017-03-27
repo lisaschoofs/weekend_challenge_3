@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <script type="text/javascript" src="vendors/jquery.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
-
+    <script type="text/javascript" src="vendors/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <h1>To Do List</h1>
@@ -14,12 +15,37 @@
       <input type="text" placeholder="add task here" name="task" id="task">
       <button id="addButton">Add Task</button>
     </div>
+
     <h2> Tasks to Complete: </h2>
-    <div class ='taskList'>
+    <div >
+      <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class ='taskList'>
+
+    </tbody>
+  </table>
 
     </div>
     <h2> Completed Tasks: </h2>
-    <div class ='completedTask'>
+    <div>
+      <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class ='completedTask'>
+
+    </tbody>
+  </table>
 
     </div>
 

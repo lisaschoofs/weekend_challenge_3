@@ -75,28 +75,25 @@ function getTasks() {
     success: function(response) {
       $('.taskList').empty();
       $('.completedTask').empty();
-      $('.taskList').append("<div></div>");
-      $('.completedTask').append("<div></div>");
       console.log(response);
       for (var i = 0; i < response.length; i++) {
+        $('.taskList').append("<tr></tr");
+        $('.completedTask').append("<tr></tr>");
         var task = response[i];
         console.log(response[i]);
         console.log(task.status);
-
-        //if statement that checks if a task has been completed or not.
-          if ( task.status === true) {
+        //if statement that checks if a task has been completed
+          if ( task.status === true ) {
             var $el = $('.taskList').children().last();
-            $el.append('<p>' + task.description +
-                      '<button id="complete" data-task="' +
-                      task.id + '">Complete!</button>' +
-                      '<button id="delete" data-task="' +
-                      task.id + '">Remove!</button></p>');
+            $el.append('<td>' + task.description + '</td>');
+            $el.append('<td><button id="complete" data-task="' + task.id + '">Complete!</button></td>');
+            $el.append('<td><button id="delete" data-task="' + task.id + '">Delete!</button></td>');
           }
           else {
             var complete = $('.completedTask').children().last();
-            complete.append('<p>' + task.description +
-                      '<button id="delete" data-task="' +
-                      task.id + '">Remove!</button></p>');
+            complete.append('<td>' + task.description + '</td>');
+            complete.append('<td><button id="delete" data-task="' +
+                            task.id + '">Remove!</button></td>');
       }
     } //ends for
     }//ends success
