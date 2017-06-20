@@ -1,8 +1,19 @@
-# 'TO DO' Application
+# Prime Digital Academy Assignment: Weekend Challenge 3 - To-Do Application
 
-This weekend is all about showing us that you have a handle on each of the different parts of the full stack. For this weekends challenge, you are going to create a 'TO DO' application. This is the type of application that is very common to tackle when learning a new language, which makes it extremely valuable to work through for the first time, since chances are good that at some point in your career you will tackle this type of application, but in another language.
+For this weekend challenge, we needed to create a full-stack To-Do List application using jQuery, Node, Express, PostgreSQL, HTML & CSS. At this point in the program, we had just learned how to work with SQL and incorporated it into our client side & server logic.
 
-### Here are the specific components for the challenge:
+---
+## Technologies Used:
+
+- jQuery
+- Node.js
+- Express
+- PostgreSQL
+- HTML 5
+- CSS 3
+
+---
+### Here are the instructions for the challenge:
 
 - Create a front end experience that allows a user to create a task.
 - When the task is created, it should be stored inside of a database (SQL)
@@ -12,16 +23,7 @@ This weekend is all about showing us that you have a handle on each of the diffe
 - Whether or not a task is complete should also be stored in the database.
 - Deleting a task should remove it both from the Front End as well as the Database.
 
-Make sure that you also show us your best styling chops.
+Bonus:
 
-We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park!
-
-Additionally, please include some way to recreate your initial database schema. This can be a .sql file with CREATE TABLE statements or you can create your schema automatically when your app loads.
-
-## HARD MODE
-
-In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
-
-## PRO MODE
-
-Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
+- In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
+- Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
